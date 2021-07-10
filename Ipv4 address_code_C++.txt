@@ -1,32 +1,33 @@
-int isValid(string s) 
+int isValid(string s)           //  This function accepts string of Ipv4 address for validation. Example s = "1.1.1.1"(Valid Ipv4 address) s="01.23.11.12"(Not a Valid address
+                                                                                                                             //as it containing trialing zeroes just before 1//
         {
-         int i=0,conv,c;
+         int i=0,conv,count_;
          conv=0;
-         c=0;
+         count_=0;
          string temp="";
         for(i=0;i<s.length();i++)
         {
-        if(s[i]!='.')
+        if(s[i]!='.')          // If s[i] is not equal to '.' make a string. 
         {
         char c = s[i];
         int n = c;
-        if(n>=48 && n<=57)
+        if(n>=48 && n<=57) 
         temp = temp + c;
         else
-        return 0;
+        return 0;            if the particular character is other than the decimal numbers return 0 //.
         }
          else
          {
           if(s[i]=='.')
           {
-            c++;  
-          if(temp.length()>=2 && ((temp[0]=='0' && temp[1]=='0') || (temp[0]=='0' && temp[1]!='0')))
+            count_++;  
+          if(temp.length()>=2 && ((temp[0]=='0' && temp[1]=='0') || (temp[0]=='0' && temp[1]!='0')))   // If it containing trialing zeroes and temp length is >=2. 
           return 0;
          else
          {
-            stringstream geek(s);
+            stringstream geek(s);       // creating stringstream objec to convert integer to string .
       
-            geek >> conv;
+            geek >> conv;   // extracting the requires string and storing it in conv//
             if(conv>255 || temp=="")
             return 0;
             temp="";
@@ -34,9 +35,10 @@ int isValid(string s)
           }
          }
         }
-        stringstream geek(temp);
+        stringstream geek(temp);      
     geek >> conv;
-    if(conv>255 || c!=3 || (temp.length()>=2 && ((temp[0]=='0' && temp[1]=='0') || (temp[0]=='0' && temp[1]!='0'))))
+    if(conv>255 || count_!=3 || (temp.length()>=2 && ((temp[0]=='0' && temp[1]=='0') || (temp[0]=='0' && temp[1]!='0'))))  // if the number of '.' is more than 3 or less than 
+                                                                                                                      // IPv4 address is invalid. we count it in c variable.
     return 0;
     else
     return 1;
