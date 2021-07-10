@@ -1,0 +1,43 @@
+int isValid(string s) 
+        {
+         int i=0,conv,c;
+         conv=0;
+         c=0;
+         string temp="";
+        for(i=0;i<s.length();i++)
+        {
+        if(s[i]!='.')
+        {
+        char c = s[i];
+        int n = c;
+        if(n>=48 && n<=57)
+        temp = temp + c;
+        else
+        return 0;
+        }
+         else
+         {
+          if(s[i]=='.')
+          {
+            c++;  
+          if(temp.length()>=2 && ((temp[0]=='0' && temp[1]=='0') || (temp[0]=='0' && temp[1]!='0')))
+          return 0;
+         else
+         {
+            stringstream geek(s);
+      
+            geek >> conv;
+            if(conv>255 || temp=="")
+            return 0;
+            temp="";
+         }
+          }
+         }
+        }
+        stringstream geek(temp);
+    geek >> conv;
+    if(conv>255 || c!=3 || (temp.length()>=2 && ((temp[0]=='0' && temp[1]=='0') || (temp[0]=='0' && temp[1]!='0'))))
+    return 0;
+    else
+    return 1;
+        }        
