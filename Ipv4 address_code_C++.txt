@@ -42,4 +42,8 @@ int isValid(string s)           //  This function accepts string of Ipv4 address
     return 0;
     else
     return 1;
-        }        
+        }     
+        
+         Time Complexity     O(n)
+         Space Complexity:-  O(1).
+         
